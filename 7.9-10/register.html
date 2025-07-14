@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>회원가입</title>
+</head>
+<body>
+  <main>
+    <article>
+      <header>
+        <h1>회원가입</h1>
+      </header>
+      <div>
+        <form>
+          <fieldset>
+            <legend>가입정보</legend>
+
+            <div>
+              <label for="userid">아이디</label><br>
+              <input type="text" id="userid" name="userid">
+            </div>
+
+            <div>
+              <label for="password">비밀번호</label><br>
+              <input type="password" id="password" name="password">
+            </div>
+
+            <div>
+              <label for="email">이메일</label><br>
+              <input type="email" id="email" name="email">
+            </div>
+          </fieldset>
+          <fieldset>
+            <legend>가입정보</legend>
+            <div>
+              <label for="username">이름</label><br>
+              <input type="text" id="username" name="username">
+            </div>
+
+            <div>
+              <label for="birth">생년월일 8자리</label><br>
+              <input type="text" id="birth" name="birth" placeholder="YYYYMMDD" maxlength="8">
+            </div>
+
+            <div>
+              <label for="carrier">통신사 선택</label><br>
+              <select id="carrier" name="carrier">
+                <option value="">선택</option>
+                <option value="SKT">SKT</option>
+                <option value="KT">KT</option>
+                <option value="LGU+">LGU+</option>
+              </select>
+            </div>
+
+            <div>
+              <span>성별</span><br>
+              <input type="radio" name="gender" value="male" id="male">
+              <label for="male">남자</label>
+              <input type="radio" name="gender" value="female" id="female">
+              <label for="female">여자</label>
+            </div>
+
+            <div>
+              <span>내/외국인</span><br>
+              <input type="radio" name="nation" value="local" id="local">
+              <label for="local">내국인</label>
+              <input type="radio" name="nation" value="foreign" id="foreign">
+              <label for="foreign">외국인</label>
+            </div>
+
+            <div>
+              <label for="phone">휴대전화번호</label><br>
+              <input type="tel" id="phone" name="phone" placeholder="휴대폰 번호">
+            </div>
+
+          </fieldset>
+          <button type="submit">회원가입</button>
+        </form>
+      </div>
+      <footer>푸터영역</footer>
+    </article>
+  </main>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Table</title>
+  <style>
+    table {
+      width: width;
+      border-collapse: collapse;
+      border: 3px double black;
+      margin: auto;
+    }
+    th, td {
+      border: 1px solid black;
+      text-align: center;
+      vertical-align: middle;
+      padding: 8px;
+    }
+    th.header, tfoot th {
+      background-color: #7dd8eb;
+    }
+    .pink {
+      background-color: #f67a9b;
+      color: white;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <table>
+    <thead>
+      <tr>
+        <th colspan="6" class="header">Table Layout (colspan = 6)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>2</td>
+        <td>3</td>
+        <td>4</td>
+        <td>5</td>
+        <td>6</td>
+      </tr>
+      <tr>
+        <td colspan="3" class="pink">7</td>
+        <td colspan="3" class="pink">8</td>
+      </tr>
+      <tr>
+        <td rowspan="2" class="pink">9</td>
+        <td>10</td>
+        <td rowspan="2" class="pink">11</td>
+        <td>12</td>
+        <td rowspan="2" class="pink">13</td>
+        <td>14</td>
+      </tr>
+      <tr>
+        <td>15</td>
+        <td>16</td>
+        <td>17</td>
+      </tr>
+      <tr>
+        <td>18</td>
+        <td>19</td>
+        <td>20</td>
+        <td>21</td>
+        <td>22</td>
+        <td>23</td>
+      </tr>
+      <tr>
+        <td>24</td>
+        <td colspan="4" rowspan="3" class="pink">
+          25 (colspan="4" rowspan="3")
+        </td>
+        <td>25</td>
+      </tr>
+      <tr>
+        <td>26</td>
+        <td>27</td>
+      </tr>
+      <tr>
+        <td>28</td>
+        <td>29</td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <th colspan="6" class="header">Table Layout (colspan = 6)</th>
+      </tr>
+    </tfoot>
+  </table>
+</body>
+</html>

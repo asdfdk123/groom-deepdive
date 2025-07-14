@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>spinner</title>
+</head>
+<style>
+    .wrap{
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .spinner {
+        width: 100px;
+        height: 100px;
+        border: 10px solid #FFD9FA; 
+        border-top: 10px solid #990085;
+        border-radius: 50%;
+        animation: spinner 1s linear infinite;
+    }
+
+    .spinner{
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        background: conic-gradient(
+        #990085,
+        #D941C5,
+        #F361DC,
+        #FFB2F5,
+        #FFD9FA
+        );
+        mask: radial-gradient(closest-side, transparent 80%, black 61%);
+        animation: spinner 1s linear infinite;
+    }
+
+    @keyframes spinner{
+        0%{
+            transform : rotate(0deg);
+        }
+
+        100%{
+            transform : rotate(360deg);
+        }
+    }
+
+    .Loading-wrap {
+      position: relative;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .Loading {
+      position: absolute;
+      font-size: 24px;
+      color: #990085;
+      animation: moveText 2s linear infinite;
+    }
+
+    @keyframes moveText {
+      0% {
+        left: -100%;
+      }
+      100% {
+        left: 100%;
+      }
+    }
+</style>
+<body>
+    <div class="wrap">
+        <div class="spinner">
+        </div>
+      <div class="Loading-wrap">
+        <div class="Loading">Loading...</div>
+`     </div>
+    </div>
+</body>
+</html>
