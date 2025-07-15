@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>반응형 웹페이지 실습</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+   
+    header{
+        background-color: peru;
+        color: white;
+        padding: 20px;
+        text-align: center;
+        font-size: 24px;
+    }
+
+    .container{
+        margin: 10px auto;
+        padding: 0 20px;
+        width: 100%;
+        max-width: 1024px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+    }
+
+    .box {
+        width: calc(33.333% - 20px);
+        padding: 40px 20px;
+        margin-bottom: 10px;
+        border: 1px solid aqua;
+        border-radius: 6px;
+        box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
+        background-color: aqua;
+        text-align: center;
+        font-size: 18px;
+    }
+
+    .wrap{
+        position: relative;
+        width: 100%;
+        aspect-ratio: 1/1;
+    }
+
+    .wrap img{
+        width: 100%;
+        transition: transform 3s ease, opacity 3s ease;
+        opacity: 1;
+      
+    }
+
+    .wrap:hover img{
+        transform: rotateY(180deg);
+        opacity: 0;
+    }
+
+    .text{
+        position: absolute;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        background: black;
+        opacity: 0;
+        transition: opacity 3s ease;
+    }
+
+    .text.real {
+        background-color: darkgreen;
+        color: gold;
+        font-weight: bold;
+        font-size: 24px;
+    }
+
+    .wrap:hover .text {
+        opacity: 1;
+    }
+
+    
+
+    @media (max-width: 1023px) {
+    .box {
+        width: calc(50% - 20px);
+        background-color: yellowgreen;
+    }
+}
+
+    @media (max-width: 639px) {
+    .box {
+        width: 100%;
+        background-color: rosybrown;
+    }
+}
+
+
+    
+</style>
+<body>
+    <header>
+        반응형 웹페이지 예재
+    </header>
+
+    <div class="container">
+        <div class="box">
+            <div class = "wrap">
+                <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Ft1.daumcdn.net%2Fcfile%2Ftistory%2F145134574E2FBF6519" alt="사진">
+                <div class="text">가품입니다!!</div>
+            </div>
+        </div>
+        <div class="box">
+            <div class = "wrap">
+                <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Ft1.daumcdn.net%2Fcfile%2Ftistory%2F145134574E2FBF6519" alt="사진">
+                <div class="text real">진품입니다!!</div>
+            </div>
+        </div>
+        <div class="box">
+            <div class = "wrap">
+                <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Ft1.daumcdn.net%2Fcfile%2Ftistory%2F145134574E2FBF6519" alt="사진">
+                <div class="text">가품입니다!!</div>
+            </div>
+        </div>
+        <div class="box">
+            <div class = "wrap">
+                <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Ft1.daumcdn.net%2Fcfile%2Ftistory%2F145134574E2FBF6519" alt="사진">
+                <div class="text">가품입니다!!</div>
+            </div>
+        </div>
+        <div class="box">
+            <div class = "wrap">
+                <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Ft1.daumcdn.net%2Fcfile%2Ftistory%2F145134574E2FBF6519" alt="사진">
+                <div class="text">가품입니다!!</div>
+            </div>
+        </div>
+        <div class="box">
+            <div class = "wrap">
+                <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Ft1.daumcdn.net%2Fcfile%2Ftistory%2F145134574E2FBF6519" alt="사진">
+                <div class="text">가품입니다!!</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
