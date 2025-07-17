@@ -3,6 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+  />
     <title>my profile</title>
 </head>
 <style>
@@ -51,6 +55,10 @@
         font-weight: bold;
         margin-top: 40px;
         width: 100%;
+    }
+    .wrapper{
+        max-width: 1200px;
+        margin: 0 auto;
     }
     .container{
         display:grid;
@@ -123,20 +131,42 @@
         background-color: #47C83E;
         width: 0%;
         border-radius: 20px;
-        transition: width 2s ease;
+        transition: width 1.5s ease;
+    }
+
+    .percent-text {
+        position: absolute;
+        right: 8px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 10px;
+        color: black;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    .p90:hover .skill-percent {
+        width: 90%;
     }
 
     .p80:hover .skill-percent {
         width: 80%;
     }
 
-    .p50:hover .skill-percent {
-        width: 50%;
+    .p60:hover .skill-percent {
+        width: 60%;
     }
 
     .p30:hover .skill-percent  {
         width: 30%;
     }
+    .p90:hover .percent-text,
+    .p80:hover .percent-text,
+    .p60:hover .percent-text,
+    .p30:hover .percent-text{
+        opacity: 1;
+    }
+
     /* experience&Education */
     /* .mainbar .wrap{
         border-bottom: 1px solid #ddd;
@@ -170,9 +200,58 @@
         box-shadow: 10px 10px 10px rgba(0,0,0, 0.2);
 
     }
+
+    .open-modal {
+        cursor: pointer;
+        font-size: 20px;
+        text-decoration: none;
+    }
+
+    .modal {
+        display: none;
+        position: fixed;
+        background: rgba(0,0,0,0.6);
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+    }
+
+    #modal-toggle:checked ~ .modal {
+        display: flex;
+    }
+
+    .modal-content {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 600px;
+        height: 80%;
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.4);
+        overflow: hidden;
+    }
+
+    .modal-content iframe {
+        width: 100%;
+        height: 100%;
+        border: none;
+    }
+
+    .close-btn {
+        position: absolute;
+        top: 8px;
+        right: 14px;
+        font-size: 24px;
+        font-weight: bold;
+        color: #333;
+        cursor: pointer;
+    }
 </style>
 <body>
 <header></header>
+<div class="wrapper">
     <div class="container">
         <div class="profile-box">
             <div class="img-box">
@@ -190,33 +269,41 @@
                     <li>📱 01045670864</li>
                 </ul>
             </div>
-            <div class="skills p80">
+            <div class="skills">
                 <h3 style="margin-bottom: 8px;">skills</h3>
-                <div class="type">
+                <div class="type p80">
                     <span>HTML/CSS</span>
                     <div class="skill-bar">
-                        <div class="skill-percent"><span class="percent-text">80%</span></div>
-                    </div><span class="percent-text"></span>
-                </div>
-
-               <div class="type">
-                    <span>HTML/CSS</span>
-                    <div class="skill-bar">
-                        <div class="skill-percent"></div>
+                        <div class="skill-percent">
+                            <span class="percent-text">80%</span>
+                        </div>
                     </div>
                 </div>
 
-               <div class="type">
-                    <span>HTML/CSS</span>
+               <div class="type p60">
+                    <span>JavaScript</span>
                     <div class="skill-bar">
-                        <div class="skill-percent"></div>
+                        <div class="skill-percent">
+                            <span class="percent-text">60%</span>
+                        </div>
                     </div>
                 </div>
 
-               <div class="type">
-                    <span>HTML/CSS</span>
+               <div class="type p30">
+                    <span>React</span>
                     <div class="skill-bar">
-                        <div class="skill-percent"></div>
+                        <div class="skill-percent">
+                            <span class="percent-text">30%</span>
+                        </div>
+                    </div>
+                </div>
+
+               <div class="type p60">
+                    <span>Mysql</span>
+                    <div class="skill-bar">
+                        <div class="skill-percent">
+                            <span class="percent-text">60%</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -224,14 +311,18 @@
             <h3 style="margin-bottom: 8px;">Languages</h3>
             <div class="type">
                 <span>한국어</span>
-                <div class="skill-bar" style="height: 15px;">
-                    <div class="skill-percent"></div>
+                <div class="skill-bar p90" style="height: 15px;">
+                    <div class="skill-percent">
+                        <span class="percent-text">90%</span>
+                    </div>
                 </div>
             </div>
             <div class="type">
-                <span>한국어</span>
-                <div class="skill-bar" style="height: 15px;">
-                    <div class="skill-percent"></div>
+                <span>영어</span>
+                <div class="skill-bar p30" style="height: 15px;">
+                    <div class="skill-percent">
+                        <span class="percent-text">30%</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -308,18 +399,23 @@
                 </div>
             </div>
         </div>
-    </div>    
+    </div>
+</div>
+    <input type="checkbox" id="modal-toggle" hidden> 
 </body>
 <footer>
-  <label for="modal-toggle" class="open-modal">📧 이메일 문의하기</label>
-  <p>마무리</p>
+  <label for="modal-toggle" class="open-modal">📧</label>
+    <a href="https://github.com/asdfdk123" target="_blank" class="footer-link">
+    <i class="fab fa-github open-modal"></i>
+  </a>
+  <a href="https://www.instagram.com/1_pot_pot" target="_blank" class="footer-link">
+    <i class="fab fa-instagram open-modal"></i>
+  </a>
 </footer>
 <div class="modal">
   <div class="modal-content">
-    <!-- 닫기 버튼 -->
     <label for="modal-toggle" class="close-btn">&times;</label>
-    <!-- iframe으로 contact.html 불러오기 -->
-    <iframe src="contact.html" frameborder="0"></iframe>
+    <iframe src="contact.html" title="문의 폼"></iframe>
   </div>
 </div>
 </html>
