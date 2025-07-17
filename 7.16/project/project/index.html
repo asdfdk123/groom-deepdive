@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Parallax</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body,
+    html {
+      min-height: 100%;
+      height: 100%;
+      margin: 0;
+      color: #777;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      left: 0;
+      z-index: 10;
+    }
+
+    .navbar {
+      overflow: hidden;
+      background-color: #333;
+      width: 100%;
+    }
+
+    .navbar a {
+      float: left;
+      display: block;
+      color: #f2f2f2;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+      font-size: 17px;
+    }
+
+    .navbar a:hover {
+      background-color: #ddd;
+      color: black;
+    }
+
+    .navbar a.active {
+      background-color: #7074a4;
+      color: white;
+    }
+
+    .navbar .icon {
+      display: none;
+    }
+
+
+    .bgimg-1,
+    .bgimg-2,
+    .bgimg-3 {
+      position: relative;
+      opacity: 0.65;
+      background-attachment: fixed;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+
+    }
+
+    .bgimg-1 {
+      background-image: url("img-parallax.jpg");
+      min-height: 100vh;
+    }
+
+    .bgimg-2 {
+      background-image: url("img-parallax2.jpg");
+      min-height: 400px;
+    }
+
+    .bgimg-3 {
+      background-image: url("img-parallax3.jpg");
+      min-height: 400px;
+    }
+
+    .caption {
+      position: absolute;
+      left: 0;
+      top: 50%;
+      width: 100%;
+      text-align: center;
+      color: #000;
+    }
+
+    .caption span.border {
+      background-color: rgba(255, 255, 255, 0.8);
+      color: #2f3256;
+      padding: 18px;
+      height: 66px;
+      border-radius: 33px;
+      font-size: 16px;
+      letter-spacing: 10px;
+    }
+
+    h3 {
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      font-size: 20px;
+      color: #fff;
+    }
+
+    .box-text {
+      color: #ddd;
+      background-color: #282E34;
+      text-align: center;
+      padding: 50px 80px;
+      text-align: justify;
+      font-size: 16px;
+      line-height: 1.5;
+    }
+
+    @media only screen and (max-device-width: 1024px) {
+
+      .bgimg-1,
+      .bgimg-2,
+      .bgimg-3 {
+        background-attachment: scroll;
+      }
+    }
+
+
+    @media screen and (max-width: 600px) {
+      .navbar a:not(:first-child) {
+        display: none;
+      }
+
+      .navbar a.icon {
+        float: right;
+        display: block;
+      }
+
+      .navbar.responsive .icon {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+      }
+
+      .navbar.responsive a {
+        float: none;
+        display: block;
+        text-align: left;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <header>
+      <nav class="navbar" id="myNavbar">
+        <a href="#section1" class="active">section1</a>
+        <a href="#section2">section2</a>
+        <a href="#section3">section3</a>
+        <a href="#none" class="icon">&#9776;</a>
+      </nav>
+    </header>
+    <div class="bgimg-1">
+      <div class="caption">
+        <span class="border">SCROLL DOWN</span>
+      </div>
+    </div>
+
+    <div id="section1" class="box-text">
+      <h3>Parallax Demo</h3>
+      <p>
+        패럴랙스 스크롤링은 웹페이지 디자인을 위한 시각적 향상 기법입니다. 이는 느리게 움직이는 배경 이미지 위에 움직이는 전경 레이어를 사용하여 페이지에 3D 입체감과 움직임을 부여합니다. 사용자가 수직
+        또는 수평으로 스크롤 할 때, 전경은 배경 위에 떠 있는 것처럼 보입니다.
+
+        패럴랙스 스크롤링은 1930년대부터 영화에서 사용된 전통적인 애니메이션 기법인 멀티플레인 카메라에서 영감을 받았습니다. 이 효과는 구식 비디오 게임의 컴퓨터 그래픽에서도 볼 수 있으며, 느리게
+        스크롤되는 배경이 깊이감을 주고 애니메이션 캐릭터가 전경에서 빠르게 움직이는 방식으로 구현됩니다. 이는 웹페이지에 적용되어 방문자가 사이트에 더 많은 시간을 보내도록 유도합니다.
+
+        패럴랙스 스크롤링은 우리의 눈이 거리감을 인식하는 방식을 기반으로 합니다. 우리에게 가까운 물체는 먼 물체보다 더 빠르게 움직이는 것처럼 보입니다. 핵심은 배경 이미지는 정적이거나 움직이는 반면,
+        전경은 배경과 다른 속도로 움직일 수 있다는 것입니다. 다양한 콘텐츠 레이어의 스크롤 속도를 조작하면 2차원 화면에서 3D 경험을 시뮬레이션할 수 있으며, 이는 웹사이트를 더욱 역동적으로 만듭니다.
+
+        배경 이미지는 종종 뷰포트(웹페이지에서 보이는 부분)보다 크고 높으며, 스크롤 할 때 느린 속도로 움직여 거리감을 형성합니다. 이는 멀리 있는 활주로에 접근하는 비행기가 고속도로를 달리는 가까운
+        자동차보다 느리게 보이는 것과 유사합니다.
+
+        텍스트와 이미지와 같은 전경 요소는 배경보다 더 빠르게 움직여 관객에게 더 가까이 있는 것처럼 보이게 합니다.
+
+      </p>
+    </div>
+
+    <div class="bgimg-2">
+      <div class="caption">
+        <span class="border">LESS HEIGHT</span>
+      </div>
+    </div>
+
+    <div id="section2" style="position:relative;">
+      <div class="box-text">
+        <p>Scroll up and down to really get the feeling of how Parallax Scrolling works.</p>
+      </div>
+    </div>
+
+    <div class="bgimg-3">
+      <div class="caption">
+        <span class="border">SCROLL UP</span>
+      </div>
+    </div>
+
+    <div id="section3" style="position:relative;">
+      <div class="box-text">
+        <p>Scroll up and down to really get the feeling of how Parallax Scrolling works.</p>
+      </div>
+    </div>
+
+    <div class="bgimg-1">
+      <div class="caption">
+        <span class="border">COOL!</span>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

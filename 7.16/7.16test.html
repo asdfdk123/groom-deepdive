@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      .header {
+        background-color: black;
+        height: 70px;
+        opacity: 0.9;
+        color: white;
+        display: flex;
+        align-items: center;
+        position: fixed;
+        width: 100%;
+        z-index: 1;
+      }
+
+      .nav {
+        display: flex;
+        gap: 20px;
+        list-style: none;
+        padding: 0 20px;
+      }
+
+      .bg,
+      .bg2,
+      .bg3 {
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+      }
+
+      .bg {
+        width: 100%;
+        height: 100vh;
+        background-size: cover;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-image: url(../7-15/image3.jpg);
+        opacity: 0.5;
+      }
+
+      .bg2 {
+        width: 100%;
+        height: 800px;
+        background-size: cover;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-image: url(../7-15/image4.jpeg);
+        opacity: 0.5;
+      }
+
+      .bg3 {
+        width: 100%;
+        height: 800px;
+        background-size: cover;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-image: url(../7-15/image5.jpeg);
+        opacity: 0.5;
+      }
+
+      .box {
+        color: #fff;
+        background-color: darkgray;
+        text-align: center;
+        padding: 50px 100px;
+        text-align: justify;
+        font-size: 16px;
+        height: 400px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+      .scroll {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 350px;
+        height: 80px;
+        border-radius: 70px;
+        background-color: lightblue;
+      }
+
+      .section1 {
+        width: 100%;
+        height: 100vh;
+        background-color: lightcoral;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      @media (max-width: 1024px) {
+        .bg,
+        .bg2,
+        .bg3 {
+          background-size: cover;
+          height: 80vh;
+          width: 100%;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .bg,
+        .bg2,
+        .bg3 {
+          background-size: cover;
+          height: 60vh;
+          width: 100%;
+        }
+      }
+
+      .hamburger {
+        right: 20px;
+      }
+
+      .hamburger::before,
+      .hamburger::after,
+      .hamburger {
+        position: absolute;
+        height: 4px;
+        width: 40px;
+        background: white;
+        border-radius: 2px;
+        transition: all 0.3s ease;
+        content: "";
+      }
+
+      .hamburger::before {
+        top: -12px;
+      }
+
+      .hamburger::after {
+        top: 12px;
+      }
+
+      .hamburger:hover {
+        background-color: transparent;
+      }
+
+      .hamburger:hover::before {
+        transform: rotate(45deg);
+        top: 0;
+      }
+
+      .hamburger:hover::after {
+        transform: rotate(-45deg);
+        top: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <div class="header">
+        <ul class="nav">
+          <li><a href="#section1">section1</a></li>
+          <li><a href="#section2">section2</a></li>
+          <li><a href="#section3">section3</a></li>
+        </ul>
+        <span class="hamburger"></span>
+      </div>
+      <div class="bg">
+        <div class="scroll">
+          <span class="scroll-btn">SCROLL DOWN</span>
+        </div>
+      </div>
+      <div id="section1" class="box">
+        <h3>보노보노 특징</h3>
+        <br />
+        <p>
+          해달이기 때문에 피하지방이 없어서 비상식량으로 늘 조개를 가지고
+          다닌다. 손에 들고 다니는 것 이외에도 겨드랑이 밑의 가죽에 스페어를
+          두고 있으며[8] 없어지면 엄청 난감해한다. 조개는 비상식 외에도 감정
+          표시를 할 때나 누굴 부를 때 콩콩콩 두드리면서 소리를 내는 데 쓰기도
+          한다. 또 바다 수영을 잘하고 잠수도 할줄 안다. 하지만 물고기는 아직
+          잡을줄 몰라서 아빠가 잡아주는걸 먹는다. 해양 동물답게 육지에선 좀 느린
+          편. 너부리와 포로리와 비교하면 확연히 아리가 난다.
+        </p>
+      </div>
+      <div class="bg2">
+        <div class="scroll">
+          <span class="scroll-btn">SCROLL DOWN</span>
+        </div>
+      </div>
+      <div id="section2" class="box">
+        <h3>보노보노 특징2</h3>
+        <br />
+        <p>
+          순진하고 온순한 성격에 따뜻한 마음씨를 가진 캐릭터. 행동은
+          느릿느릿하고 말투도 조금 어벙하다. 보노보노 아빠도 행태가 똑같은 걸
+          보면 유전인 듯. 그 느릿느릿하고 어벙한 말투가 워낙 특징적이라 전혀
+          특별할 것 없이 단순히 친구들을 부르는 대사인 ’너부리야~ 포로리야~’ 만
+          가지고도 누가봐도 알 수 있게끔 보노보노 흉내를 낼 수 있다. 아빠에겐
+          보노라고 줄여서 불리지만 더빙판에선 평범하게 불린다. 그러나 16년판에선
+          더빙판에서도 보노라고 부르기 시작했다.
+        </p>
+      </div>
+      <div class="bg3">
+        <div class="scroll">
+          <span class="scroll-btn">SCROLL DOWN</span>
+        </div>
+      </div>
+      <div id="section3" class="box">
+        <h3>보노보노 특징3</h3>
+        <br />
+        <p>
+          사고 방식이 특이해서 세상 여러 가지 일에 대해서 궁금하게 여긴다.
+          보노보노가 문득 궁금하게 여기는 것을 친구들과 함께 탐구하고 다니는
+          것이 애니메이션의 주요한 패턴. 너무 어처구니 없는 것을 궁금해하거나
+          느려 터지게 행동하는 바람에 너부리에게 얻어맞는 일도 허다하다.
+          포로리를 쫓아오는 누나 아로리한테 같이 쫓기는 등 엉뚱한 면도 있다.
+        </p>
+      </div>
+    </div>
+  </body>
+</html>

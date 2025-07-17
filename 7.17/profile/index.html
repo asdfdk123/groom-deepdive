@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>my profile</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    
+    body{
+        background-color: #B7F0B1;
+    }
+
+    h3{
+        font-size: 14px;
+        color: #8C8C8C;
+    }
+
+    ul{
+        border-bottom: 1px solid #ddd;
+        padding-bottom: 10px;
+        margin-bottom: 10px;
+    }
+
+    li{
+        font-size: 10px;
+        margin-top: 5px;
+        margin-bottom: 3px;
+        list-style: none;
+    }
+
+    span{
+        font-size: 10px;
+        }
+
+    div .type{
+        margin-bottom:8px;
+    }
+
+    footer {
+        background-color: #47C83E;
+        color: white;
+        text-align: center;
+        padding: 20px 0;
+        font-size: 12px;
+        font-weight: bold;
+        margin-top: 40px;
+        width: 100%;
+    }
+    .container{
+        display:grid;
+        grid-template-columns: 280px 1fr;
+        margin:16px;
+        gap: 16px;
+        max-width: 960px; 
+        
+    }
+    /* profile */
+    .profile-box{
+        background-color: white;
+        padding: 10px;
+        border-radius: 10px;
+        height: fit-content;
+        box-shadow: 10px 10px 10px rgba(0,0,0, 0.2);
+    }
+
+    /* profile-image */
+    .img-box{
+        width:100%;
+        overflow: hidden;
+    }
+
+    .img-wrap{
+        position: relative;
+        width: 100%;
+    }
+
+    .img-wrap img {
+        position: relative;
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        border-radius: 10px;
+    }
+
+    .name{
+        position: absolute;
+        bottom: 10px;
+        left: 10px;
+        color: black;
+        padding: 6px 12px;
+    }
+
+    .github-chart {
+        width: 100%;         /* 부모 요소에 맞게 꽉 차게 */
+        max-width: 100%;     /* 넘치지 않게 */
+        height: auto;        /* 비율 유지 */
+        margin-top: 10px;    /* 위에 간격 */
+        border-radius: 8px;  /* 둥근 테두리 (선택) */
+    }
+
+    /* skill&language*/
+    .skills{
+        margin-top:16px;
+    }
+
+    .skill-bar{
+        margin-top: 8px;
+        background-color: white;
+        height: 10px;
+        border-radius: 20px;
+        overflow: hidden;
+        position: relative;
+    }
+
+    .skill-percent{
+        height:100%;
+        background-color: #47C83E;
+        width: 0%;
+        border-radius: 20px;
+        transition: width 2s ease;
+    }
+
+    .p80:hover .skill-percent {
+        width: 80%;
+    }
+
+    .p50:hover .skill-percent {
+        width: 50%;
+    }
+
+    .p30:hover .skill-percent  {
+        width: 30%;
+    }
+    /* experience&Education */
+    /* .mainbar .wrap{
+        border-bottom: 1px solid #ddd;
+        padding-bottom: 16px;
+        margin-bottom: 20px;
+    }
+
+    .mainbar .wrap:last-child {
+        border-bottom: none;
+    } */
+    .period{
+        font-size: 12px;
+        font-weight: bold;
+        color: #47C83E;
+    }
+
+    /* mainbar*/
+    .mainbar{
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+    }
+    
+    .introduce-box,
+    .experience-box,
+    .education-box{
+        background-color: white;
+        padding: 15px;
+        border-radius: 10px;
+        min-height: 300px;
+        box-shadow: 10px 10px 10px rgba(0,0,0, 0.2);
+
+    }
+</style>
+<body>
+<header></header>
+    <div class="container">
+        <div class="profile-box">
+            <div class="img-box">
+                <div class="img-wrap">
+                    <img src="img.jpg" alt="프로필">
+                    <h2 class="name">최원형</h2>
+                </div>
+            </div>
+            <div class="profile-info">
+                <ul class="my-info">
+                    <li>info</li>
+                    <li>info</li>
+                    <li>info</li>
+                    <li>📱 01045670864</li>
+                    <li>📱 01045670864</li>
+                </ul>
+            </div>
+            <div class="skills p80">
+                <h3 style="margin-bottom: 8px;">skills</h3>
+                <div class="type">
+                    <span>HTML/CSS</span>
+                    <div class="skill-bar">
+                        <div class="skill-percent"><span class="percent-text">80%</span></div>
+                    </div><span class="percent-text"></span>
+                </div>
+
+               <div class="type">
+                    <span>HTML/CSS</span>
+                    <div class="skill-bar">
+                        <div class="skill-percent"></div>
+                    </div>
+                </div>
+
+               <div class="type">
+                    <span>HTML/CSS</span>
+                    <div class="skill-bar">
+                        <div class="skill-percent"></div>
+                    </div>
+                </div>
+
+               <div class="type">
+                    <span>HTML/CSS</span>
+                    <div class="skill-bar">
+                        <div class="skill-percent"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="languages">
+            <h3 style="margin-bottom: 8px;">Languages</h3>
+            <div class="type">
+                <span>한국어</span>
+                <div class="skill-bar" style="height: 15px;">
+                    <div class="skill-percent"></div>
+                </div>
+            </div>
+            <div class="type">
+                <span>한국어</span>
+                <div class="skill-bar" style="height: 15px;">
+                    <div class="skill-percent"></div>
+                </div>
+            </div>
+        </div>
+        </div>
+        <div class="mainbar">
+            <div class="introduce-box">
+                <p class="intro-text">
+                <h3 style="font-size: 28px; margin-bottom: 20px;">Introduce</h3>
+                    이름 : <strong>최원형</strong>입니다.<br>
+                    성격 : 조금은 무뚝뚝하고 뭔가 이상해 보일수도 있지만 착할겁니다<br>
+                    포부 : <strong>7개월간 최선을 다해</strong> 임하겠습니다!<br>
+                    프론트엔트를 원하는 이유 : 프론트엔드 개발자는 사용자가 직접 마주하는 <strong>인터페이스를 만들고</strong>,
+                    그 반응을 바로 볼 수 있어 매력적입니다.<br>
+                </p>
+<!-- 물결표시 노래추가 --> 
+                <div class="intro-image">
+                    <img src="https://ghchart.rshah.org/asdfdk123" class="github-chart">
+                    <p class="img-caption">이렇게 텅텅 비어있는 사막에서 열심히 채울수 있도록 해보겠습니다!</p>
+                </div>
+
+            </div>
+            <div class="experience-box">
+                <h3 style="font-size: 28px; margin-bottom: 20px;">Work Experience</h3>
+                <div class="wrap">
+                    <h3>Frontend Developer</h3>
+                    <span class="period">기간</span>
+                    <ul>
+                        <li>내용</li>
+                        <li>내용</li>
+                        <li>내용</li>
+                    </ul>
+                </div>
+                <div class="wrap">
+                    <h3>Frontend Developer</h3>
+                    <span class="period">기간</span>
+                    <ul>
+                        <li>내용</li>
+                        <li>내용</li>
+                        <li>내용</li>
+                    </ul>
+                </div>
+                <div class="wrap">
+                    <h3>Frontend Developer</h3>
+                    <span class="period">기간</span>
+                    <ul>
+                        <li>내용</li>
+                        <li>내용</li>
+                        <li>내용</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="education-box">
+                <h3 style="font-size: 28px; margin-bottom: 20px;">Education</h3>
+                <div class="wrap">
+                    <h3>구름 부트캠프</h3>
+                    <span class="period">기간</span>
+                    <ul>
+                        <li>프론트엔드개발자 과정</li>
+                    </ul>
+                </div>
+                <div class="wrap">
+                    <h3>구름 부트캠프</h3>
+                    <span class="period">기간</span>
+                    <ul>
+                        <li>프론트엔드개발자 과정</li>
+                    </ul>
+                </div>
+                <div class="wrap">
+                    <h3>구름 부트캠프</h3>
+                    <span class="period">기간</span>
+                    <ul>
+                        <li>프론트엔드개발자 과정</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>    
+</body>
+<footer>
+  <label for="modal-toggle" class="open-modal">📧 이메일 문의하기</label>
+  <p>마무리</p>
+</footer>
+<div class="modal">
+  <div class="modal-content">
+    <!-- 닫기 버튼 -->
+    <label for="modal-toggle" class="close-btn">&times;</label>
+    <!-- iframe으로 contact.html 불러오기 -->
+    <iframe src="contact.html" frameborder="0"></iframe>
+  </div>
+</div>
+</html>
