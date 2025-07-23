@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Document</title>
+  <style>
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+    <button type="button" id="menu-btn">메뉴 열기/닫기</button>
+    <nav id="menu" class="navigation hidden">
+        <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        </ul>
+    </nav>
+
+    <script>
+        const menuBtn = document.getElementById('menu-btn');
+        const menu = document.getElementById('menu');
+
+        menuBtn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+            console.log('메뉴 상태:', menu.classList.contains('hidden') ? '닫힘' : '열림');
+        });
+    </script>
+</body>
+</html>

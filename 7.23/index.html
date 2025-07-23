@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .box{
+        width: 200px;
+        height: 200px;
+    }
+
+    .bg-color{
+        background-color: #f00
+    }
+</style>
+<body>
+   <div>
+    <button type="button" id="myBtn">버튼</button>
+    <div class="box" id="boxRed">
+        수요일
+    </div>
+   </div> 
+</body>
+<script>
+    const button = document.getElementById('myBtn');
+    button.addEventListener('click',()=>{
+        alert("변환")
+    const box=document.getElementById('boxRed');
+    box.style.backgroundColor="#000";
+    box.style.color="aqua"
+    document.getElementById('boxRed').classList.add('bg-color');
+})
+</script>
+</html> 

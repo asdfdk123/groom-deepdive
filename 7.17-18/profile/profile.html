@@ -75,6 +75,8 @@
         border-radius: 10px;
         height: fit-content;
         box-shadow: 10px 10px 10px rgba(0,0,0, 0.2);
+        position: sticky;
+        top: 16px;
     }
 
     /* profile-image */
@@ -105,11 +107,11 @@
     }
 
     .github-chart {
-        width: 100%;         /* 부모 요소에 맞게 꽉 차게 */
-        max-width: 100%;     /* 넘치지 않게 */
-        height: auto;        /* 비율 유지 */
-        margin-top: 10px;    /* 위에 간격 */
-        border-radius: 8px;  /* 둥근 테두리 (선택) */
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        margin-top: 10px;
+        border-radius: 8px;
     }
 
     /* skill&language*/
@@ -167,16 +169,6 @@
         opacity: 1;
     }
 
-    /* experience&Education */
-    /* .mainbar .wrap{
-        border-bottom: 1px solid #ddd;
-        padding-bottom: 16px;
-        margin-bottom: 20px;
-    }
-
-    .mainbar .wrap:last-child {
-        border-bottom: none;
-    } */
     .period{
         font-size: 14px;
         font-weight: bold;
@@ -231,11 +223,13 @@
     .project-card img {
         width: 100%;
         height: 180px;
+        margin-bottom: 10px;
         object-fit: cover;
     }
     
     .project-box ul {
         border-bottom: none;
+
     }
 
     /* footer */
@@ -286,6 +280,7 @@
         color: #333;
         cursor: pointer;
     }
+    
 </style>
 <body>
 <header></header>
@@ -294,7 +289,7 @@
         <div class="profile-box">
             <div class="img-box">
                 <div class="img-wrap">
-                    <img src="img.jpg" alt="프로필">
+                    <img src="profile.jpg" alt="프로필">
                     <h2 class="name">최원형</h2>
                 </div>
             </div>
@@ -387,7 +382,7 @@
                     <h3>Frontend Developer</h3>
                     <span class="period">📅 NOW ~ </span>
                     <ul>
-                        <li>아무나 시켜만 주면 좋죠</li>
+                        <li>아무나 시켜만 주면 좋죠 이제부터 만들어 봐야죠</li>
                     </ul>
                 </div>
                 <div class="wrap">
@@ -432,40 +427,34 @@
         </div>
     </div>
     <div class="project-box">
-            <h3 style="font-size: 28px; margin-bottom: 20px;">🖥️ project</h3>
+        <h3 style="font-size: 28px; margin-bottom: 20px;">🖥️ project</h3>
         <div class="project-grid">
             <!-- 카드 1번 -->
             <div class="project-card">
                 <img src="project1.png" alt="프로젝트1" />
-                <div class="project-info">
-                    <h3>Groom DeepDive</h3>
-                    <ul>
-                        <li class="period">25.07 ~ NOW</li>
-                        <li>개발자 되기 프로젝트</li>
-                    </ul>
-                </div>
+                <h3>Groom DeepDive</h3>
+                <ul>
+                    <li class="period">25.07 ~ NOW</li>
+                    <li>개발자 되기 프로젝트</li>
+                </ul>
             </div>
             <!-- 카드 2번 -->
             <div class="project-card">
                 <img src="project2.png" alt="프로젝트2" />
-                <div class="project-info">
-                    <h3>전자기기 중고거래 사이트</h3>
-                    <ul>
-                        <li class="period">25.03 ~ NOW</li>
-                        <li>학교 졸업작품 제작 중</li>
-                    </ul>
-                </div>
+                <h3>전자기기 중고거래 사이트</h3>
+                <ul>
+                    <li class="period">25.03 ~ NOW</li>
+                    <li>학교 졸업작품 제작 중</li>
+                </ul>
             </div>
             <!-- 카드 3번 -->
             <div class="project-card">
                 <img src="project3.jpg" alt="프로젝트3" />
-                <div class="project-info">
-                    <h3>Achro-EM kit 리듬게임</h3>
-                    <ul>
-                        <li class="period">25.04 ~ 25.06</li>
-                        <li>임베디드 리듬게임 개발</li>
-                    </ul>
-                </div>
+                <h3>Achro-EM kit 리듬게임</h3>
+                <ul>
+                    <li class="period">25.04 ~ 25.06</li>
+                    <li>임베디드 리듬게임 개발</li>
+                </ul>
             </div>
             <!-- 카드 4번 -->
             <div class="project-card">
