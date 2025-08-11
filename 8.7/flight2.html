@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>항공편 스케줄 해외편</title>
+    <style></style>
+  </head>
+  <body>
+    <h2>항공편 스케줄 해외편</h2>
+    <div id="flight-list"></div>
+
+    <script>
+      const flights = [
+        {
+          airnm: '대한항공',
+          fltno: '17',
+          depcity: '서울',
+          depairport: 'ICN',
+          depdate: '2025-12-01',
+          deptm: '14:30',
+          arrcity: '로스앤젤레스',
+          arrairport: 'LAX',
+          arrdate: '2025-12-01',
+          arrtm: '08:30',
+          cabinclass: '일반석',
+          baggage: '2개',
+        },
+        {
+          airnm: '유나이티드항공',
+          fltno: '391',
+          depcity: '로스앤젤레스',
+          depairport: 'LAX',
+          depdate: '2025-12-31',
+          deptm: '07:21',
+          arrcity: '샌프란시스코',
+          arrairport: 'SFO',
+          arrdate: '2025-12-31',
+          arrtm: '08:48',
+          cabinclass: '일반석',
+          baggage: '2개',
+        },
+        {
+          airnm: '유나이티드항공',
+          fltno: '1995',
+          depcity: '샌프란시스코',
+          depairport: 'SFO',
+          depdate: '2026-01-29',
+          deptm: '19:10',
+          arrcity: '라스베이거스',
+          arrairport: 'LAS',
+          arrdate: '2026-01-29',
+          arrtm: '20:43',
+          cabinclass: '일반석',
+          baggage: '2개',
+        },
+        {
+          airnm: '대한항공',
+          fltno: '6',
+          depcity: '라스베이거스',
+          depairport: 'LAS',
+          depdate: '2026-02-27',
+          deptm: '22:50',
+          arrcity: '서울',
+          arrairport: 'ICN',
+          arrdate: '2026-03-01',
+          arrtm: '05:20',
+          cabinclass: '일반석',
+          baggage: '2개',
+        },
+      ];
+
+      const list = document.getElementById('flight-list');
+
+      flights.forEach((flight) => {
+        const card = document.createElement('div');
+        card.className = 'schedule-card';
+
+        card.innerHTML = `
+        <div class="route">${flight.depcity} (${flight.depairport}) -> ${flight.arrcity} (${flight.arrairport})</div>
+        <div class="flight-info">
+          ${flight.airnm} ${flight.fltno} | ${flight.depdate} ${flight.deptm} 출발 -> ${flight.arrdate} ${flight.arrtm} 도착
+        </div>
+        <div>
+          <div class="bag"> ${flight.cabinclass} ·  수하물 ${flight.baggage}</div>
+          <button class="book-btn">예약 가능</button>
+        </div>
+      `;
+        list.appendChild(card);
+      });
+    </script>
+  </body>
+</html>

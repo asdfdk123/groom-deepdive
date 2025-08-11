@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>항공권 스케줄 국내편</title>
+    <style>
+      body {
+        background-color: whitesmoke;
+      }
+      #flightlist {
+        max-width: 600px;
+        margin: 20px auto;
+      }
+
+      .flightcard {
+        position: relative;
+        border-radius: 12px;
+        padding: 20px;
+        margin-bottom: 16px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+        border: 1px solid #e0e0e0;
+        background-color: white;
+      }
+
+      .flightcard .hk {
+        position: absolute;
+        top: 16px;
+        right: 16px;
+        background-color: skyblue;
+        color: white;
+        padding: 4px 10px;
+        font-size: 12px;
+        border-radius: 5px;
+      }
+
+      .flightcard h3 {
+        margin-top: 0;
+        margin-bottom: 10px;
+        font-size: 18px;
+      }
+
+      .flightcard p {
+        margin: 4px 0;
+        color: #333;
+      }
+
+      .line {
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+        margin-bottom: 10px;
+      }
+
+      .line p {
+        flex: none;
+        margin: 0;
+        font-size: 14px;
+      }
+
+      .line p:first-child {
+        text-align: left;
+      }
+
+      .line p:last-child {
+        text-align: right;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="flightlist">
+      <div class="flightcard" id="card0">
+        <div class="hk" id="hk0"></div>
+        <h3 id="tickettitle0"></h3>
+        <div class="line">
+          <p><strong>출발</strong>:<span id="departure0"></span> - <span id="departuretime0"></span></p>
+          <p><strong>도착</strong>:<span id="arrival0"></span> - <span id="arrivaltime0"></span></p>
+        </div>
+        <div class="line">
+          <p><strong>좌석</strong>:<span id="class0"></span></p>
+          <p><strong>항공편</strong>:<span id="flightnum0"></span></p>
+        </div>
+      </div>
+      <div class="flightcard" id="card1">
+        <div class="hk" id="hk1"></div>
+        <h3 id="tickettitle1"></h3>
+        <div class="line">
+          <p><strong>출발</strong>:<span id="departure1"></span> - <span id="departuretime1"></span></p>
+          <p><strong>도착</strong>:<span id="arrival1"></span> - <span id="arrivaltime1"></span></p>
+        </div>
+        <div class="line">
+          <p><strong>좌석</strong>:<span id="class1"></span></p>
+          <p><strong>항공편</strong>:<span id="flightnum1"></span></p>
+        </div>
+      </div>
+    </div>
+    <script>
+      const flightData = [
+        {
+          airline: '에어서울',
+          flightNumber: '901',
+          departure: '김포 (GMP)',
+          departureTime: '2025-09-16 06:00',
+          arrival: '제주 (CJU)',
+          arrivalTime: '2025-09-16 07:15',
+          cabinClass: '할인석',
+          seatStatus: 'HK',
+        },
+        {
+          airline: '진에어',
+          flightNumber: '516',
+          departure: '제주 (CJU)',
+          departureTime: '2025-09-27 21:15',
+          arrival: '김포 (GMP)',
+          arrivalTime: '2025-09-27 22:30',
+          cabinClass: '할인석',
+          seatStatus: 'HK',
+        },
+      ];
+
+      flightData.forEach((flight, i) => {
+        document.getElementById(`hk${i}`).textContent = flight.seatStatus;
+        document.getElementById(`tickettitle${i}`).textContent = `${flight.airline} ${flight.flightNumber}`;
+        document.getElementById(`departure${i}`).textContent = flight.departure;
+        document.getElementById(`departuretime${i}`).textContent = flight.departureTime;
+        document.getElementById(`arrival${i}`).textContent = flight.arrival;
+        document.getElementById(`arrivaltime${i}`).textContent = flight.arrivalTime;
+        document.getElementById(`class${i}`).textContent = flight.cabinClass;
+        document.getElementById(`flightnum${i}`).textContent = flight.flightNumber;
+      });
+    </script>
+  </body>
+</html>

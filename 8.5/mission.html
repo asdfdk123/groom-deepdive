@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>mission</title>
+  </head>
+  <body>
+    <h2>사용자 생성</h2>
+    <input type="text" id="nameInput" placeholder="이름 입력" />
+    <input type="password" id="passwordInput" placeholder="비밀번호 입력" />
+    <button id="createBtn">사용자 생성</button>
+    <p id="createResult"></p>
+
+    <h2>비밀번호 확인</h2>
+    <input type="password" id="checkPwInput" placeholder="비밀번호 확인" />
+    <button id="checkPwBtn">확인</button>
+    <p id="checkPwResult"></p>
+
+    <h2>사용자 수 확인</h2>
+    <button id="countBtn">사용자 수 보기</button>
+    <p id="countResult"></p>
+
+    <script>
+      class User {
+        static count = 0; // 전체 사용자 수
+        #password; // private 비밀번호
+        _name; // class 내부 이름
+
+        constructor(name, password) {
+          this.name = name; // setter를 통해 검증
+          this.#password = password; // 비밀번호 저장
+          User.count++; // 사용자수 증가
+        }
+
+        // Getter: 이름을 대문자로 변환해 반환
+        get name() {
+          return this._name.toUpperCase();
+        }
+
+        // Setter: 이름은 반드시 2글자 이상이어야 함
+        set name(value) {
+          if (value.length < 2) {
+            throw new Error("이름은 2글자 이상.");
+          }
+          this._name = value;
+        }
+
+        // 비밀번호 확인 메서드
+        checkPassword(password) {
+          return this.#password === password;
+        }
+
+        // 전체 사용자 수 반환
+        static getCount() {
+          return User.count;
+        }
+      }
+
+      let currentUser = null; // 현재 생성된 사용자 저장용 변수
+
+      // 사용자 생성 버튼 클릭 이벤트
+      document.getElementById("createBtn").addEventListener("click", () => {
+        const name = document.getElementById("nameInput").value;
+        const password = document.getElementById("passwordInput").value;
+
+        try {
+          currentUser = new User(name, password); // User 인스턴스 생성
+          document.getElementById(
+            "createResult"
+          ).textContent = `생성 완료: ${currentUser.name}님!`;
+        } catch (err) {
+          document.getElementById("createResult").textContent = err.message;
+        }
+      });
+
+      // 비밀번호 확인 버튼 클릭 이벤트
+      document.getElementById("checkPwBtn").addEventListener("click", () => {
+        if (!currentUser) {
+          document.getElementById("checkPwResult").textContent =
+            "사용자를 생성 바람";
+          return;
+        }
+        const inputPw = document.getElementById("checkPwInput").value;
+        const isMatch = currentUser.checkPassword(inputPw);
+        document.getElementById("checkPwResult").textContent = isMatch
+          ? "비밀번호 일치"
+          : "비밀번호 불일치";
+      });
+
+      // 사용자 수 확인 버튼 클릭 이벤트
+      document.getElementById("countBtn").addEventListener("click", () => {
+        document.getElementById(
+          "countResult"
+        ).textContent = `총 사용자 수: ${User.getCount()}`;
+      });
+    </script>
+  </body>
+</html>

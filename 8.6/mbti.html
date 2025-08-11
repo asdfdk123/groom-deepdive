@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>MBTI 검사</title>
+    <style>
+      body {
+        max-width: 700px;
+        margin: 40px auto;
+        padding: 20px;
+      }
+
+      h1 {
+        text-align: center;
+        margin-bottom: 40px;
+      }
+
+      .question {
+        background: #f9f9f9;
+        padding: 20px;
+        margin-bottom: 25px;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+      }
+
+      .question p {
+        font-size: 18px;
+        margin-bottom: 15px;
+      }
+
+      .options {
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+      }
+
+      .option {
+        display: inline-block;
+      }
+
+      input[type="radio"] {
+        display: none;
+      }
+
+      label {
+        display: inline-block;
+        padding: 12px 24px;
+        background-color: #a957c2;
+        color: white;
+        border-radius: 8px;
+        cursor: pointer;
+        user-select: none;
+      }
+
+      input[type="radio"]:checked + label {
+        background-color: #e03f65;
+      }
+
+      #result {
+        margin: 40px 0;
+        font-size: 20px;
+        text-align: center;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>🧠 MBTI 간단 검사</h1>
+    <div id="result"></div>
+    <div id="quiz"></div>
+
+    <script>
+      const questions = {
+        q1: { text: "고등학교에서 유명했나요?", a: "E", b: "I" }, // EI
+        q2: { text: "운동(스포츠)를 하나요?", a: "S", b: "N" }, // SN
+        q3: { text: "수학을 잘하나요?", a: "T", b: "F" }, // TF
+        q4: { text: "지금 방이 깨끗한가요?", a: "J", b: "P" }, // JP
+      };
+      const answers = {}; // 사용자의 응답을 저장
+
+      // 각 MBTI 항목 선택 시 점수 증가
+      const score = { E: 0, I: 0, S: 0, N: 0, T: 0, F: 0, J: 0, P: 0 };
+
+      const quizEl = document.getElementById("quiz");
+      const resultEl = document.getElementById("result");
+      function renderQuestions() {
+
+        Object.entries(questions).forEach(([key, q]) => {
+          const container = document.createElement("div");
+          container.className = "question";
+
+          container.innerHTML = `
+                <p>${q.text}<p>
+                    <div class="options">
+                        <div class="option">
+                            <input type="radio" id="${key}_a" name="${key}" value="${q.a}"></input>
+                            <label for="${key}_a">YES</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="${key}_b" name="${key}" value="${q.b}"></input>
+                            <label for="${key}_b">NO</label>
+                        </div>
+                    </div>
+                `;
+
+          quizEl.appendChild(container);
+
+          container.querySelectorAll('input[type="radio"]').forEach((input) => {
+            input.addEventListener("change", () => {
+              // 사용자의 선택을 answers에 저장
+              answers[key] = input.value;
+
+              // 모든 질문이 답변되면 결과 표시
+              if (
+                Object.keys(answers).length === Object.keys(questions).length
+              ) {
+                showResult();
+              }
+            });
+          });
+        });
+      }
+
+      function showResult() {
+        // 점수 초기화
+        for (let k in score) score[k] = 0;
+        console.log(score);
+        // answers 객체에서 값이 있는 항목만 필터링해 새 객체로 변환
+        const newAnswers = Object.fromEntries(
+          Object.entries(answers).filter(([_, value]) => value)
+        );
+        console.log(newAnswers);
+
+        // Object.values로 점수 계산
+        Object.values(newAnswers).forEach((ans) => score[ans]++);
+        console.log(score);
+        // MBTI 결정
+        const result =
+          (score.E > score.I ? "E" : "I") +
+          (score.S > score.N ? "S" : "N") +
+          (score.T > score.F ? "T" : "F") +
+          (score.J > score.P ? "J" : "P");
+        console.log(result);
+        // 결과 출력
+        resultEl.textContent = `MBTI는 ${result} 입니다`;
+      }
+
+      renderQuestions();
+
+    </script>
+  </body>
+</html>

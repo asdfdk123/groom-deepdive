@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>KBO 야구 일정표</title>
+    <style>
+      .day-group {
+        display: flex;
+        border-top: 2px solid #444;
+      }
+
+      .date-cell {
+        width: 80px;
+        text-align: center;
+        background-color: #f7f7f7;
+        font-weight: bold;
+        padding-top: 14px;
+        border-right: 1px solid #ddd;
+      }
+
+      .game-list {
+        flex: 1;
+      }
+
+      .game-row {
+        display: flex;
+        align-items: center;
+        border-top: 1px solid #eee;
+        padding: 10px;
+      }
+
+      .cell {
+        padding: 0 10px;
+        font-size: 14px;
+        text-align: center;
+      }
+
+      .time-cell {
+        width: 80px;
+      }
+      .field-cell {
+        width: 160px;
+      }
+      .broadcast-cell {
+        width: 120px;
+      }
+      .btn-cell {
+        width: 100px;
+      }
+
+      .team-cell {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+      }
+
+      .team-box {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+      }
+
+      .team {
+        font-weight: bold;
+      }
+
+      .team-logo {
+        width: 20px;
+        height: 20px;
+      }
+
+      .score {
+        font-weight: bold;
+      }
+
+      .score.red {
+        color: red;
+      }
+
+      .score.gray {
+        color: #aaa;
+      }
+
+      .gray {
+        color: #aaa;
+      }
+
+      .btn {
+        padding: 5px 10px;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+      }
+
+      .btn.canceled {
+        background-color: #aaa;
+        color: white;
+        cursor: not-allowed;
+      }
+
+      .highlight {
+        background-color: #0066cc;
+        color: white;
+      }
+
+      .wait {
+        background-color: #ddd;
+        color: #444;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>야구 일정표</h1>
+    <div id="schedule-container"></div>
+  <script>
+    fetch('schedule.json')
+      .then((response) => response.json())
+      .then((data) => {
+        const schedule = data.schedule;
+        const container = document.getElementById('schedule-container');
+
+        // 날짜 정렬
+        const dates = Object.keys(schedule).sort();
+
+        dates.forEach((date) => {
+          const newDate = setDate(date);
+          const games = schedule[date];
+
+          // 날짜 그룹 박스 생성
+          const dayGroup = document.createElement('div');
+          dayGroup.className = 'day-group';
+
+          // 왼쪽 날짜 셀
+          const dateCell = document.createElement('div');
+          dateCell.className = 'date-cell';
+          dateCell.innerText = newDate;
+
+          // 오른쪽 경기 목록을 담을 박스
+          const gameList = document.createElement('div');
+          gameList.className = 'game-list';
+
+          // 각 경기 정보 추출
+          games.forEach((game) => {
+            const time = `${game.startTime.slice(0, 2)}:${game.startTime.slice(2)}`;
+            const home = game.homeTeamName;
+            const away = game.awayTeamName;
+            const field = game.fieldName;
+            const broadcast = game.op.broadcast || '-';
+
+            // 점수 및 버튼 HTML 생성
+            let scoreHTML = '';
+            let buttonHTML = '';
+
+            const isCanceled = game.gameStatus === 'CANCEL';
+
+            if (isCanceled) {
+              // 우천취소 경기
+              scoreHTML = `<span class="gray">연기</span>`;
+              buttonHTML = `<button class="btn canceled" disabled>우천취소</button>`;
+            } else if (game.gameStatus === 'END') {
+              // 경기 종료
+              const homeScore = parseInt(game.homeResult);
+              const awayScore = parseInt(game.awayResult);
+              const homeClass = homeScore > awayScore ? 'red' : '';
+              const awayClass = awayScore > homeScore ? 'red' : '';
+
+              scoreHTML = `
+                <span class="score ${homeClass}">${homeScore}</span>
+                <span class="gray">종료</span>
+                <span class="score ${awayClass}">${awayScore}</span>
+              `;
+              buttonHTML = `<button class="btn highlight">하이라이트</button>`;
+            } else {
+              // 경기 전
+              scoreHTML = `
+                <span class="score gray">-</span>
+                <span class="gray">경기전</span>
+                <span class="score gray">-</span>
+              `;
+              buttonHTML = `<button class="btn wait">준비중</button>`;
+            }
+
+            // 로고 주소
+            const homeLogo = game.homeTeamImageUrl;
+            const awayLogo = game.awayTeamImageUrl;
+
+            // 한 줄로 나열
+            const row = document.createElement('div');
+            row.className = 'game-row';
+            row.innerHTML = `
+              <div class="cell time-cell">${time}</div>
+              <div class="cell field-cell">${field}</div>
+              <div class="cell team-cell">
+                <div class="team-box">
+                  <span class="team">${home}</span>
+                  <img src="${homeLogo}" alt="${home}" class="team-logo" />
+                </div>
+                ${scoreHTML}
+                <div class="team-box">
+                  <img src="${awayLogo}" alt="${away}" class="team-logo" />
+                  <span class="team">${away}</span>
+                </div>
+              </div>
+              <div class="cell broadcast-cell">${broadcast}</div>
+              <div class="cell btn-cell">${buttonHTML}</div>
+            `;
+
+            gameList.appendChild(row);
+          });
+
+          dayGroup.appendChild(dateCell);
+          dayGroup.appendChild(gameList);
+          container.appendChild(dayGroup);
+        });
+
+        // 날짜 포맷 변경 함수
+        function setDate(yyyymmdd) {
+          const year = yyyymmdd.slice(0, 4);
+          const month = yyyymmdd.slice(4, 6);
+          const day = yyyymmdd.slice(6, 8);
+          const dateObj = new Date(`${year}-${month}-${day}`);
+          const dayNames = ['일', '월', '화', '수', '목', '금', '토'];
+          const dayName = dayNames[dateObj.getDay()];
+          return `${month}.${day} ${dayName}`;
+        }
+      })
+      .catch((error) => {
+        console.error('json error:', error);
+      });
+  </script>
+
+  </body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>알람</title>
+    <style>
+      body {
+        font-family: sans-serif;
+        padding: 24px;
+      }
+      h1 {
+        margin-bottom: 8px;
+      }
+      button {
+        padding: 8px 12px;
+        cursor: pointer;
+        border-radius: 6px;
+      }
+      .clock {
+        font-size: 40px;
+        margin-bottom: 8px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>금요일이라 매우 행복해하는 마지막을 울릴 타이머</h1>
+    <div id="clock" class="clock">--:--:--</div>
+    <div id="status">대기 중...</div>
+    <div class="music">
+      <button id="playBtn">강제 재생</button>
+      <button id="stopBtn">강제 정지</button>
+    </div>
+    <script>
+      const sound = new Audio('banana.mp3');
+
+      const clock = document.getElementById('clock');
+      const status = document.getElementById('status');
+      const play = document.getElementById('playBtn');
+      const stop = document.getElementById('stopBtn');
+ 
+      // 현재 시간 표시
+      function renderClock() {
+        const now = new Date();
+        clock.textContent = now.toLocaleTimeString('ko-KR', { hour12: false });
+        return now;
+      }
+      // 휴식 시작
+      function startBreak() {
+        if (!sound.paused) return;
+        sound.currentTime = 0;
+        try {
+          sound.play();
+          status.textContent = '노래 재생';
+        } catch (err) {
+          console.error(err);
+        }
+      }
+      // 휴식 종료
+      function stopBreak() {
+        if (!sound.paused) {
+          sound.pause();
+          sound.currentTime = 0;
+        }
+        status.textContent = '노래 강제 종료';
+      }
+      // 매초 체크
+      setInterval(() => {
+        const time = renderClock();
+        const m = time.getMinutes();
+        const s = time.getSeconds();
+
+        if (m === 50 && s === 0) {
+          startBreak();
+        }
+        if (m === 0 && s === 0) {
+          stopBreak();
+        }
+      }, 1000);
+
+      renderClock();
+      //수동 재생
+      play.addEventListener('click', () => {
+        startBreak();
+      });
+      // 수동 정지 버튼
+      stop.addEventListener('click', () => {
+        stopBreak();
+      });
+    </script>
+  </body>
+</html>

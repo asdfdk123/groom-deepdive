@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <div id="app"></div>
+
+    <script>
+      const user = {
+        id: 99999,
+        name: '최원형',
+        email: 'cwh0607@naver.com',
+        role: 'admin',
+        createdAt: '2025-08-08',
+      };
+
+      function renderUserForm({ name, email, ...rest }) {
+        const form = document.createElement('form');
+
+        form.appendChild(createInput({ label: '이름', value: name, name: 'name' }));
+        form.appendChild(createInput({ label: '이메일', value: email, name: 'email' }));
+
+        const infoBox = document.createElement('div');
+        infoBox.className = 'info-box';
+
+        const title = document.createElement('h3');
+        title.textContent = '추가 정보';
+
+        infoBox.appendChild(title);
+
+        for (const [key, value] of Object.entries(rest)) {
+          const p = document.createElement('p');
+          p.textContent = `${key}: ${value}`;
+          infoBox.appendChild(p);
+        }
+
+        form.appendChild(infoBox);
+        document.getElementById('app').appendChild(form);
+      }
+
+      function createInput({ label, value, name }) {
+        const wrapper = document.createElement('label');
+        wrapper.textContent = label;
+        const input = document.createElement('input');
+        input.value = value;
+        input.name = name;
+        wrapper.appendChild(input);
+        return wrapper;
+      }
+
+      renderUserForm(user);
+    </script>
+  </body>
+</html>
