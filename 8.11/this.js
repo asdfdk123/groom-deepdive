@@ -36,8 +36,8 @@ const user1 = {
   }
 };
 
-user1.greet(); // "안녕, 나는 시윤이야"
+user1.greet();
 
 const sayHello = user1.greet.bind(user1);
 
-sayHello(); // ❌ "안녕, 나는 undefined이야" (strict mode에서는 undefined)
+sayHello();

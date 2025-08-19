@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"] // 에디터 인텔리센스/점프 지원
+    }
+  },
+  "include": ["src"]
+}
